@@ -61,7 +61,8 @@ public class SlidingMenuHelper {
 	 */
 	public void onPostCreate(Bundle savedInstanceState) {
 		if (mViewBehind == null || mViewAbove == null) {
-			throw new IllegalStateException("Both setBehindContentView must be called " + "in onCreate in addition to setContentView.");
+//			throw new IllegalStateException("Both setBehindContentView must be called " + "in onCreate in addition to setContentView.");
+//			return;
 		}
 
 		mOnPostCreateCalled = true;

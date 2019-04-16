@@ -7,16 +7,16 @@ import android.os.Bundle;
 
 public class MainActivity extends SlidingMenuActivity {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setBehindContentView(R.layout.left_frame);
-        SlidingMenu sm = getSlidingMenu();
-        sm.setShadowWidthRes(R.dimen.shadow_width);
-        sm.setShadowDrawable(R.drawable.shadow_left);
-        sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-        sm.setFadeDegree(0.35f);
-        sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+	@Override public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		SlidingMenu sm = getSlidingMenu();
+		sm.setShadowWidthRes(R.dimen.shadow_width);
+		sm.setBehindOffsetRes(R.dimen.sliding_menu_offset);
+		sm.setFadeDegree(0.5f);
+		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		sm.setMode(SlidingMenu.RIGHT);
 		// setSlidingActionBarEnabled(true);
 		// sm.setBehindScrollScale(0.0f);
 		// sm.setBehindCanvasTransformer(new SlidingMenu.CanvasTransformer() {
@@ -33,25 +33,15 @@ public class MainActivity extends SlidingMenuActivity {
 		// }.getInterpolation(percentOpen)), 0);
 		// }
 		// });
-        setContentView(R.layout.activity_main);
-        getSlidingMenu().setMode(SlidingMenu.LEFT_RIGHT);
-        getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.left_frame, new LeftMenuFragment())
-                .commit();
+//		setBehindContentView(R.layout.left_frame);
+//		sm.setShadowDrawable(R.drawable.shadow_left);
+//		getSupportFragmentManager().beginTransaction().replace(R.id.left_frame, new LeftMenuFragment()).commit();
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.content_frame, new ContentFragment())
-                .commit();
-//
-        getSlidingMenu().setSecondaryMenu(R.layout.right_frame);
-        getSlidingMenu().setSecondaryShadowDrawable(R.drawable.shadow_right);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.right_frame, new RightMenuFragment())
-                .commit();
-    }
+		getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new ContentFragment()).commit();
+
+		getSlidingMenu().setSecondaryMenu(R.layout.right_frame);
+		getSlidingMenu().setSecondaryShadowDrawable(R.drawable.shadow_right);
+		getSupportFragmentManager().beginTransaction().replace(R.id.right_frame, new RightMenuFragment()).commit();
+	}
 }
